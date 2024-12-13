@@ -15,9 +15,10 @@ import time
 
 from ps_controller import PS2Controller
 ps2 = PS2Controller()
-myco=True
+myco=False
 if myco:
     mc = MyCobot280("/dev/ttyUSB0", 115200)
+    mc.set_fresh_mode(1)
     mc.send_angles([
             0., 0., 0., 0., 0., 0.
         ], 50)
@@ -26,7 +27,6 @@ if myco:
     def closeGriper():
         mc.set_gripper_state(1, 50)
 
-
     def openGriper():
         mc.set_gripper_state(0, 50)
 
@@ -34,7 +34,7 @@ joint_angles = [
             0., 0., 0., 0., 0., 0.
         ]
 
-class ReachEnv(gym.Env):
+class ReachEnv:
     def __init__(self, is_render=False, is_good_view=False):
         """
         用于初始化reach环境中的各项参数，
@@ -73,11 +73,10 @@ class ReachEnv(gym.Env):
             0., 0., 0., 0., 0., 0.
         ]
 
-        self.init_joint_positions = [1.5304915274152644, 0.16290427866369986, -1.6303230289870254, -0.12902048283445677, 0.10332056146024116, -0.7958197990875415]
-
+        self.init_joint_positions = [2.020977160069395, 0.5504488694962674, -1.9839523600153866, -0.0003392996957494921, -0.09259654241789984, 1.1893554977186631]
         self.likep = self.init_joint_positions
 
-        self.init_quat = [0.9166524410247803, -0.3961286246776581, -0.03051437810063362, -0.04358098655939102]
+        self.init_quat = [-0.40001824498176575, 0.9127882122993469, -0.04376596584916115, 0.06991163641214371]
 
         self.seed()
         self.reset()
@@ -204,7 +203,7 @@ import threading
 def my_thread_function():
     while True:
         mc.send_radians(list(joint_angles), 50)
-        time.sleep(0.5)
+        time.sleep(0.05)
 
 
 # 创建一个线程对象
