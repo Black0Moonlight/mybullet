@@ -32,20 +32,34 @@ class ReachEnv(gym.Env):
             p.connect(p.DIRECT)
 
         # 机械臂移动范围限制
-        self.x_low_obs = 0.2
-        self.x_high_obs = 0.7
-        self.y_low_obs = -0.3
-        self.y_high_obs = 0.3
-        self.z_low_obs = 0
-        self.z_high_obs = 0.55
+        # self.x_low_obs = 0.2
+        # self.x_high_obs = 0.7
+        # self.y_low_obs = -0.3
+        # self.y_high_obs = 0.3
+        # self.z_low_obs = 0
+        # self.z_high_obs = 0.55
+
+        self.x_low_obs = -2
+        self.x_high_obs = 2
+        self.y_low_obs = -2
+        self.y_high_obs = 2
+        self.z_low_obs = -2
+        self.z_high_obs = 2
 
         # 机械臂动作范围限制
-        self.x_low_action = -0.4
-        self.x_high_action = 0.4
-        self.y_low_action = -0.4
-        self.y_high_action = 0.4
-        self.z_low_action = -0.6
-        self.z_high_action = 0.3
+        # self.x_low_action = -0.4
+        # self.x_high_action = 0.4
+        # self.y_low_action = -0.4
+        # self.y_high_action = 0.4
+        # self.z_low_action = -0.6
+        # self.z_high_action = 0.3
+
+        self.x_low_action = -2
+        self.x_high_action = 2
+        self.y_low_action = -2
+        self.y_high_action = 2
+        self.z_low_action = -2
+        self.z_high_action = 2
 
         # 设置相机
         p.resetDebugVisualizerCamera(cameraDistance=1.5,
@@ -60,10 +74,10 @@ class ReachEnv(gym.Env):
             dtype=np.float32)
 
         # 状态空间
-        self.observation_space = spaces.Box(
-            low=np.array([self.x_low_obs, self.y_low_obs, self.z_low_obs, self.x_low_obs, self.y_low_obs, self.z_low_obs]),
-            high=np.array([self.x_high_obs, self.y_high_obs, self.z_high_obs, self.x_high_obs, self.y_high_obs, self.z_high_obs]),
-            dtype=np.float32)
+        # self.observation_space = spaces.Box(
+        #     low=np.array([self.x_low_obs, self.y_low_obs, self.z_low_obs, self.x_low_obs, self.y_low_obs, self.z_low_obs]),
+        #     high=np.array([self.x_high_obs, self.y_high_obs, self.z_high_obs, self.x_high_obs, self.y_high_obs, self.z_high_obs]),
+        #     dtype=np.float32)
 
         # 时间步计数器
         self.step_counter = 0
@@ -82,6 +96,7 @@ class ReachEnv(gym.Env):
         self.orientation = p.getQuaternionFromEuler(
             [0., -math.pi, math.pi / 2.])
 
+        self.last_end_pos = [0, 0, 0]
         self.seed()
         self.reset()
 
@@ -132,11 +147,11 @@ class ReachEnv(gym.Env):
         # 载入平面
         p.loadURDF(os.path.join(self.urdf_root_path, "plane.urdf"), basePosition=[0, 0, 0])
         # 载入机械臂
-        search_path = "/home/blamlight/Github/mybullet/mycobot_description/urdf/mycobot_280_m5"
+        search_path = "./mycobot_description/urdf/mycobot_280_m5"
 
         p.setAdditionalSearchPath(search_path)
         urdf_file = "mycobot_280_m5.urdf"
-        self.kuka_id = p.loadURDF(urdf_file, useFixedBase=True)
+        self.kuka_id = p.loadURDF(urdf_file, useFixedBase=True, flags=p.URDF_USE_SELF_COLLISION)
         # 载入桌子
         # p.loadURDF(os.path.join(self.urdf_root_path, "table/table.urdf"), basePosition=[0.5, 0, -0.65])
         # p.loadURDF(os.path.join(self.urdf_root_path, "tray/traybox.urdf"), basePosition=[0.55,0,0])
@@ -165,6 +180,7 @@ class ReachEnv(gym.Env):
 
         self.robot_pos_obs = p.getLinkState(self.kuka_id,
                                             self.num_joints - 1)[4]
+        self.last_end_pos = self.robot_pos_obs
         # print(self.robot_pos_obs)
         # logging.debug("init_pos={}\n".format(p.getLinkState(self.kuka_id,self.num_joints-1)))
         p.stepSimulation()
@@ -177,13 +193,17 @@ class ReachEnv(gym.Env):
         #     p.getBasePositionAndOrientation(self.object_id)[0]).astype(
         #     np.float32)
         # return np.array(self.object_pos).astype(np.float32), self.object_state
+        print("reset")
         return np.hstack((np.array(self.robot_pos_obs).astype(np.float32)))
 
     def step(self, action):
         """根据action获取下一步环境的state、reward、done"""
-        limit_x = [0.2, 0.7]
-        limit_y = [-0.3, 0.3]
-        limit_z = [0, 0.55]
+        # limit_x = [0.2, 0.7]
+        # limit_y = [-0.3, 0.3]
+        # limit_z = [0, 0.55]
+        limit_x = [-2, 2]
+        limit_y = limit_x
+        limit_z = limit_x
 
         def clip_val(val, limit):
             if val < limit[0]:
@@ -220,13 +240,47 @@ class ReachEnv(gym.Env):
             )
         p.stepSimulation()
 
+        # p.setPhysicsEngineParameter(contactBreakingThreshold=0.1)
+        bb = 0
+        if len(p.getContactPoints(bodyA=self.kuka_id, bodyB=self.kuka_id)):
+            bb=1
+        joint_pairs_to_check = [(6, 0), (6, 1), (6, 2), (6, 3), (6, 4)]  # 需要检测的关节对
+        for link_a, link_b in joint_pairs_to_check:
+            points = p.getClosestPoints(self.kuka_id, self.kuka_id, 0.02, link_a, link_b)
+            if points:
+                for point in points:
+                    bb = point[8]
+
+        if bb > 0:
+            # print(bb)
+            # print()
+            self.new_robot_pos = self.last_end_pos
+            # 通过逆运动学计算机械臂移动到新位置的关节角度
+            self.robot_joint_positions = p.calculateInverseKinematics(
+                bodyUniqueId=self.kuka_id,
+                endEffectorLinkIndex=self.num_joints - 1,
+                targetPosition=[self.new_robot_pos[0], self.new_robot_pos[1], self.new_robot_pos[2]],
+                targetOrientation=self.orientation,
+                jointDamping=self.joint_damping,
+            )
+            # 使机械臂移动到新位置
+            for i in range(1, self.num_joints):
+                p.resetJointState(
+                    bodyUniqueId=self.kuka_id,
+                    jointIndex=i,
+                    targetValue=self.robot_joint_positions[i - 1],
+                )
+            p.stepSimulation()
+        else:
+            self.last_end_pos = self.current_pos
+
         # 在代码开始部分，如果定义了is_good_view，那么机械臂的动作会变慢，方便观察
         if self.is_good_view:
             time.sleep(0.05)
 
         self.step_counter += 1
 
-        print(self.current_pos, self.new_robot_pos)
+        # print(self.current_pos, self.new_robot_pos)
         return 1
 
 
@@ -245,10 +299,25 @@ if __name__ == '__main__':
     success_times = 0
     for i in range(100):
         env.reset()
-        for i in range(1000):
-            action = env.action_space.sample()
+        for i in range(10000):
+            keys = p.getKeyboardEvents()
+            action = [0,0,0]
+            if p.B3G_UP_ARROW in keys:
+                action[0] = 0.1
+            if p.B3G_DOWN_ARROW in keys:
+                action[0] = -0.1
+            if p.B3G_LEFT_ARROW in keys:
+                action[1] = 0.1
+            if p.B3G_RIGHT_ARROW in keys:
+                action[1] = -0.1
+            if p.B3G_PAGE_UP in keys:
+                action[2] = 0.1
+            if p.B3G_PAGE_DOWN in keys:
+                action[2] = -0.1
+            # action = env.action_space.sample()
             done = env.step(action)
             # print('done={}'.format(done))
+
         # time.sleep(0.1)
     print()
     print('sum_reward={}'.format(sum_reward))

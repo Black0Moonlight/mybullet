@@ -5,8 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cb148236-6cb9-449f-8389-41c689e67670" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/mybullet.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mybullet.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myco.py" beforeDir="false" afterPath="$PROJECT_DIR$/myco.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/joint1.dae" beforeDir="false" afterPath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/joint1.dae" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/joint2.dae" beforeDir="false" afterPath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/joint2.dae" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/joint3.dae" beforeDir="false" afterPath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/joint3.dae" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/joint4.dae" beforeDir="false" afterPath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/joint4.dae" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/joint5.dae" beforeDir="false" afterPath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/joint5.dae" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/joint6.dae" beforeDir="false" afterPath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/joint6.dae" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/joint7.dae" beforeDir="false" afterPath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/joint7.dae" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/mycobot_280_m5.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/mycobot_280_m5.urdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/mycobot_280m5_with_camera_flange.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/mycobot_280m5_with_camera_flange.urdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/mycobot_280m5_with_camera_flange_pump.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/mycobot_280m5_with_camera_flange_pump.urdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/mycobot_280m5_with_gripper_parallel.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/mycobot_280m5_with_gripper_parallel.urdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/mycobot_280m5_with_gripper_up.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/mycobot_280m5_with_gripper_up.urdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/mycobot_280m5_with_pump.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/mycobot_280m5_with_pump.urdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/mycobot_280m5_with_vision.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/mycobot_280m5_with_vision.urdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/noenv.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/noenv.urdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/suit_env.dae" beforeDir="false" afterPath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/suit_env.dae" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/withenv.urdf" beforeDir="false" afterPath="$PROJECT_DIR$/mycobot_description/urdf/mycobot_280_m5/withenv.urdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ps_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/ps_controller.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,16 +51,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.myco.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/blamlight/Github/mybullet&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.main.executor": "Run",
+    "Python.myco.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/GitHub/mybullet",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -70,7 +96,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-6a3326d57233-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.24807.21" />
+        <option value="bundled-python-sdk-98f27166c754-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.21829.153" />
       </set>
     </attachedChunks>
   </component>
